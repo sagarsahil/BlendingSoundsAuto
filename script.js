@@ -30,7 +30,7 @@ function update(){
     var response='';
     var indicator='';
     for (var i = 0; i < numsounds; i++) {
-        changeseed=getRandomInt(2);
+        changeseed=getRandomInt(3);//This should generate 0,1,2
         if (changeseed==1) 
         {
             rand_first= getRandomInt(card1.length);
@@ -58,10 +58,20 @@ function update(){
             }
             thirdchar=card3[rand_third].data;
         }
+
+        
         response += '<div class="item btn-toolbar"> ';
         response += '<button type="button" class="btn-primary btn-lg">'+firstchar + "</button>";        
         response += '<button type="button" class="btn-warning btn-lg">'+secondchar + "</button>";
-        response += '<button type="button" class="btn-primary btn-lg">'+thirdchar + "</button>";                    
+        //Special condition
+        if (card2[rand_second].id!=40) {
+            response += '<button type="button" class="btn-primary btn-lg">'+thirdchar + "</button>";                    
+        }
+        else
+        {
+            response += '<button type="button" style="font-size:1" class="btn-primary btn-lg">.</button>';                    
+        }
+        
         response +=' </center></div>';
         indicator += '<li data-target="#myCarousel" data-slide-to="'+i+'"></li>';
     }
